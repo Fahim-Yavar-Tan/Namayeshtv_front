@@ -12,90 +12,92 @@ const Menu = () => {
             onClick={() => setOpen(!open)}
           ></div>
         )}
-        <div className="fixed top-0 left-0 w-[100vw] lg:w-[300px] h-[100dvh] overflow-hidden z-40">
-          <div
-            className="absolute top-0 left-0 z-50"
-            onClick={() => setOpen(!open)}
-          >
-            <AnimatedHamburgerButton active={open} className="z-50" />
-          </div>
-          <motion.div
-            className="bg-white rounded-full relative top-4 left-4 z-40"
-            animate={open ? { scale: 40 } : { scale: 0.01 }}
-            transition={{ duration: 0.7 }}
-          ></motion.div>
-          {open && (
-            <motion.div
-              className="z-60 relative flex flex-col gap-8 text-center text-2xl text-white mt-20"
-              transition={{ staggerChildren: 0.3 }}
-            >
-              <motion.div
-                animate={{ x: 0, opacity: 1 }}
-                initial={{ x: -100, opacity: 0 }}
-                transition={{ delay: 0.5 }}
-                onClick={() => setOpen(!open)}
-              >
-                <a href="/"> خانه </a>
-              </motion.div>
-              <motion.div
-                animate={{ x: 0, opacity: 1 }}
-                initial={{ x: -100, opacity: 0 }}
-                transition={{ delay: 0.6 }}
-                onClick={() => setOpen(!open)}
-              >
-                <a href="/table"> جدول پخش </a>
-              </motion.div>
-              <motion.div
-                animate={{ x: 0, opacity: 1 }}
-                initial={{ x: -100, opacity: 0 }}
-                transition={{ delay: 0.7 }}
-                onClick={() => setOpen(!open)}
-              >
-                <a href="/movies"> فیلم </a>
-              </motion.div>
-              <motion.div
-                animate={{ x: 0, opacity: 1 }}
-                initial={{ x: -100, opacity: 0 }}
-                transition={{ delay: 0.8 }}
-                onClick={() => setOpen(!open)}
-              >
-                <a href="/series"> سریال </a>
-              </motion.div>
-              <motion.div
-                animate={{ x: 0, opacity: 1 }}
-                initial={{ x: -100, opacity: 0 }}
-                transition={{ delay: 0.9 }}
-                onClick={() => setOpen(!open)}
-              >
-                <a href="/movies">برنامه ها </a>
-              </motion.div>
-              <motion.div
-                animate={{ x: 0, opacity: 1 }}
-                initial={{ x: -100, opacity: 0 }}
-                transition={{ delay: 1 }}
-                onClick={() => setOpen(!open)}
-              >
-                <a href="/news">اخبار </a>
-              </motion.div>
-              <motion.div
-                animate={{ x: 0, opacity: 1 }}
-                initial={{ x: -100, opacity: 0 }}
-                transition={{ delay: 1.1 }}
-                onClick={() => setOpen(!open)}
-              >
-                <a href="/contact">ارتباط با ما</a>
-              </motion.div>
-              <motion.div
-                animate={{ x: 0, opacity: 1 }}
-                initial={{ x: -100, opacity: 0 }}
-                transition={{ delay: 1.2 }}
-                onClick={() => setOpen(!open)}
-              >
-                <a href="/live">پخش زنده</a>
-              </motion.div>
-            </motion.div>
-          )}
+        <div
+          className="absolute top-0 left-0 z-50"
+          onClick={() => setOpen(!open)}
+        >
+          <AnimatedHamburgerButton active={open} className="z-50" />
         </div>
+        {open && (
+          <div className="fixed top-0 left-0 w-[100vw] lg:w-[300px] h-[100dvh] overflow-hidden bg-yellow-200/30 z-40">
+            <motion.div
+              className="bg-white rounded-full relative top-4 left-4 z-40"
+              animate={open ? { scale: 40 } : { scale: 0.01 }}
+              transition={{ duration: 0.7 }}
+            ></motion.div>
+            {open && (
+              <motion.div
+                className="z-60 relative flex flex-col gap-8 text-center text-2xl text-white mt-20"
+                transition={{ staggerChildren: 0.3 }}
+              >
+                <motion.div
+                  animate={{ x: 0, opacity: 1 }}
+                  initial={{ x: -100, opacity: 0 }}
+                  transition={{ delay: 0.5 }}
+                  onClick={() => setOpen(!open)}
+                >
+                  <a href="/"> خانه </a>
+                </motion.div>
+                <motion.div
+                  animate={{ x: 0, opacity: 1 }}
+                  initial={{ x: -100, opacity: 0 }}
+                  transition={{ delay: 0.6 }}
+                  onClick={() => setOpen(!open)}
+                >
+                  <a href="/table"> جدول پخش </a>
+                </motion.div>
+                <motion.div
+                  animate={{ x: 0, opacity: 1 }}
+                  initial={{ x: -100, opacity: 0 }}
+                  transition={{ delay: 0.7 }}
+                  onClick={() => setOpen(!open)}
+                >
+                  <a href="/movies"> فیلم </a>
+                </motion.div>
+                <motion.div
+                  animate={{ x: 0, opacity: 1 }}
+                  initial={{ x: -100, opacity: 0 }}
+                  transition={{ delay: 0.8 }}
+                  onClick={() => setOpen(!open)}
+                >
+                  <a href="/series"> سریال </a>
+                </motion.div>
+                <motion.div
+                  animate={{ x: 0, opacity: 1 }}
+                  initial={{ x: -100, opacity: 0 }}
+                  transition={{ delay: 0.9 }}
+                  onClick={() => setOpen(!open)}
+                >
+                  <a href="/movies">برنامه ها </a>
+                </motion.div>
+                <motion.div
+                  animate={{ x: 0, opacity: 1 }}
+                  initial={{ x: -100, opacity: 0 }}
+                  transition={{ delay: 1 }}
+                  onClick={() => setOpen(!open)}
+                >
+                  <a href="/news">اخبار </a>
+                </motion.div>
+                <motion.div
+                  animate={{ x: 0, opacity: 1 }}
+                  initial={{ x: -100, opacity: 0 }}
+                  transition={{ delay: 1.1 }}
+                  onClick={() => setOpen(!open)}
+                >
+                  <a href="/contact">ارتباط با ما</a>
+                </motion.div>
+                <motion.div
+                  animate={{ x: 0, opacity: 1 }}
+                  initial={{ x: -100, opacity: 0 }}
+                  transition={{ delay: 1.2 }}
+                  onClick={() => setOpen(!open)}
+                >
+                  <a href="/live">پخش زنده</a>
+                </motion.div>
+              </motion.div>
+            )}
+          </div>
+        )}
       </div>
     </>
   );

@@ -5,7 +5,7 @@ const MovieCard = ({ img, name, year, duration }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="h-[300px] w-[220px] m-8 ">
+    <div className="h-[300px] w-[220px] m-8 mx-auto ">
       <div className="h-[270px] w-full overflow-hidden relative rounded-tl-3xl rounded-br-3xl">
         {/* Outer Motion div with scaling */}
         <motion.div
