@@ -9,24 +9,24 @@ const AdNavbar = () => {
   const [isSeriesOpen, setIsSeriesOpen] = useState(false);
   const [isShowsOpen, setIsShowsOpen] = useState(false);
   return (
-    <nav className="absolute right-0 top-0 overflow-y-auto h-[100dvh] w-[200px] border-l border-white bg-[#2b2b2b] ">
+    <nav className="absolute right-0 top-0  overflow-y-auto h-[100dvh] w-[200px] border-l border-white bg-[#2b2b2b] ">
       <ul className="h-full w-full flex flex-col">
-        <li className="w-full h-[45px] border-b text-white p-1 border-white/40 ">
+        <li className="w-full h-[35px]  text-white p-1 border-white/40 ">
           <Link to={"/"}> نمایش وبسایت</Link>
         </li>
-        <li className="w-full h-[45px] border-b text-white p-1 border-white/40 ">
+        <li className="w-full h-[35px]  text-white p-1 border-white/40 ">
           <Link to={"/admin/dashboard"}>داشبورد</Link>
         </li>
-        <li className="w-full h-[45px] border-b text-white p-1 border-white/40 ">
+        <li className="w-full h-[35px]  text-white p-1 border-white/40 ">
           <Link to={"/"}>جدول پخش نمایش</Link>
         </li>
-        <li className="w-full h-[45px] border-b text-white p-1 border-white/40 ">
+        <li className="w-full h-[35px]  text-white p-1 border-white/40 ">
           <Link to={"/"}>جدول پخش تماشا</Link>
         </li>
-        <li className="w-full h-[45px] border-b text-white p-1 border-white/40 ">
+        <li className="w-full h-[35px]  text-white p-1 border-white/40 ">
           <Link to={"/admin/slider"}>اسلایدر</Link>
         </li>
-        <li className="w-full h-[35px] border-b bg-[#740000] text-white p-1 border-white/40 relative ">
+        <li className="w-full h-[35px]  bg-[#740000] text-white p-1 border-white/40 relative ">
           <button onClick={() => setIsNewsOpen(!isNewsOpen)}>اخبار</button>
           {isNewsOpen ? (
             <RiArrowDownSLine
@@ -41,21 +41,21 @@ const AdNavbar = () => {
           )}
         </li>
         {isNewsOpen && (
-          <li className="w-full h-[35px] border-b text-white p-1 border-white/40 ">
+          <li className="w-full h-[35px]  pr-6 text-white p-1 border-white/40 ">
             <Link to={"/"}>لیست اخبار</Link>
           </li>
         )}
         {isNewsOpen && (
-          <li className="w-full h-[35px] border-b text-white p-1 border-white/40 ">
+          <li className="w-full h-[35px]  pr-6 text-white p-1 border-white/40 ">
             <Link to={"/"}>افزودن خبر</Link>
           </li>
         )}
         {isNewsOpen && (
-          <li className="w-full h-[35px] border-b text-white p-1 border-white/40 ">
+          <li className="w-full h-[35px]  pr-6 text-white p-1 border-white/40 ">
             <Link to={"/"}>دسته بندی اخبار</Link>
           </li>
         )}
-        <li className="w-full h-[35px] border-b bg-[#740000] text-white p-1 border-white/40 relative ">
+        <li className="w-full h-[35px]  bg-[#740000] text-white p-1 border-white/40 relative ">
           <button onClick={() => setIsMoviesOpen(!isMoviesOpen)}>فیلم</button>
           {isMoviesOpen ? (
             <RiArrowDownSLine
@@ -70,41 +70,41 @@ const AdNavbar = () => {
           )}
         </li>
         {isMoviesOpen && (
-          <li className="w-full h-[35px] border-b text-white p-1 border-white/40 ">
+          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
             <Link to={"/"}>لیست فیلم ها</Link>
           </li>
         )}
         {isMoviesOpen && (
-          <li className="w-full h-[35px] border-b text-white p-1 border-white/40 ">
+          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
             <Link to={"/admin/addmovie"}>افزودن فیلم</Link>
           </li>
         )}
         {isMoviesOpen && (
-          <li className="w-full h-[35px] border-b text-white p-1 border-white/40 ">
+          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
             <Link to={"/"}>بازیگرها</Link>
           </li>
         )}
         {isMoviesOpen && (
-          <li className="w-full h-[35px] border-b text-white p-1 border-white/40 ">
+          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
             <Link to={"/"}>کارگردان ها</Link>
           </li>
         )}
         {isMoviesOpen && (
-          <li className="w-full h-[35px] border-b text-white p-1 border-white/40 ">
+          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
             <Link to={"/admin/genres"}>ژانر</Link>
           </li>
         )}
         {isMoviesOpen && (
-          <li className="w-full h-[35px] border-b text-white p-1 border-white/40 ">
+          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
             <Link to={"/"}>نظرات کاربران</Link>
           </li>
         )}
         {isMoviesOpen && (
-          <li className="w-full h-[35px] border-b text-white p-1 border-white/40 ">
+          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
             <Link to={"/"}>درخواست پخش</Link>
           </li>
         )}
-        <li className="w-full h-[35px] border-b bg-[#740000] text-white p-1 border-white/40 relative ">
+        <li className="w-full h-[35px]  bg-[#740000] text-white p-1 border-white/40 relative ">
           <button onClick={() => setIsSeriesOpen(!isSeriesOpen)}>سریال</button>
           {isSeriesOpen ? (
             <RiArrowDownSLine
@@ -119,26 +119,26 @@ const AdNavbar = () => {
           )}
         </li>
         {isSeriesOpen && (
-          <li className="w-full h-[35px] border-b text-white p-1 border-white/40 ">
+          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
             <Link to={"/"}>لیست سریال</Link>
           </li>
         )}
         {isSeriesOpen && (
-          <li className="w-full h-[35px] border-b text-white p-1 border-white/40 ">
+          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
             <Link to={"/"}>افزودن سریال</Link>
           </li>
         )}
         {isSeriesOpen && (
-          <li className="w-full h-[35px] border-b text-white p-1 border-white/40 ">
+          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
             <Link to={"/"}>نظرات کاربران</Link>
           </li>
         )}
         {isSeriesOpen && (
-          <li className="w-full h-[35px] border-b text-white p-1 border-white/40 ">
+          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
             <Link to={"/"}>درخواست پخش</Link>
           </li>
         )}
-        <li className="w-full h-[35px] border-b bg-[#740000] text-white p-1 border-white/40 relative">
+        <li className="w-full h-[35px]  bg-[#740000] text-white p-1 border-white/40 relative">
           <button onClick={() => setIsShowsOpen(!isShowsOpen)}>برنامه</button>
           {isShowsOpen ? (
             <RiArrowDownSLine
@@ -153,12 +153,12 @@ const AdNavbar = () => {
           )}
         </li>
         {isShowsOpen && (
-          <li className="w-full h-[35px] border-b text-white p-1 border-white/40 ">
+          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
             <Link to={"/"}>لیست برنامه</Link>
           </li>
         )}
         {isShowsOpen && (
-          <li className="w-full h-[35px] border-b text-white p-1 border-white/40 ">
+          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
             <Link to={"/"}>افزودن برنامه</Link>
           </li>
         )}
