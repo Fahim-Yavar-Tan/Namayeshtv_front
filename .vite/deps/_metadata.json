@@ -1,0 +1,82 @@
+{
+  "hash": "e09cff48",
+  "configHash": "f0ea1c4a",
+  "lockfileHash": "a34b9d22",
+  "browserHash": "37913dbf",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "ec511dfd",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "53da8dd4",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.mjs",
+      "file": "react-router-dom.js",
+      "fileHash": "77051a05",
+      "needsInterop": false
+    },
+    "framer-motion": {
+      "src": "../../node_modules/framer-motion/dist/es/index.mjs",
+      "file": "framer-motion.js",
+      "fileHash": "ab8cd955",
+      "needsInterop": false
+    },
+    "react-icons/ci": {
+      "src": "../../node_modules/react-icons/ci/index.mjs",
+      "file": "react-icons_ci.js",
+      "fileHash": "efb5927d",
+      "needsInterop": false
+    },
+    "swiper/react": {
+      "src": "../../node_modules/swiper/swiper-react.mjs",
+      "file": "swiper_react.js",
+      "fileHash": "794f97af",
+      "needsInterop": false
+    },
+    "swiper/modules": {
+      "src": "../../node_modules/swiper/modules/index.mjs",
+      "file": "swiper_modules.js",
+      "fileHash": "fe319aac",
+      "needsInterop": false
+    },
+    "@mui/material/Rating": {
+      "src": "../../node_modules/@mui/material/Rating/index.js",
+      "file": "@mui_material_Rating.js",
+      "fileHash": "708265b8",
+      "needsInterop": false
+    },
+    "@mui/icons-material/StarBorder": {
+      "src": "../../node_modules/@mui/icons-material/esm/StarBorder.js",
+      "file": "@mui_icons-material_StarBorder.js",
+      "fileHash": "b8be7f96",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-JUWM2LYA": {
+      "file": "chunk-JUWM2LYA.js"
+    },
+    "chunk-GWB25WZV": {
+      "file": "chunk-GWB25WZV.js"
+    },
+    "chunk-25L37SWT": {
+      "file": "chunk-25L37SWT.js"
+    },
+    "chunk-6LX6CQ4K": {
+      "file": "chunk-6LX6CQ4K.js"
+    },
+    "chunk-W4EHDCLL": {
+      "file": "chunk-W4EHDCLL.js"
+    },
+    "chunk-EWTE5DHJ": {
+      "file": "chunk-EWTE5DHJ.js"
+    }
+  }
+}
