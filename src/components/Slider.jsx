@@ -22,7 +22,7 @@ const Slider = () => {
         modules={[Navigation, Autoplay]}
         loop={true}
         autoplay={{
-          delay: 5000,
+          delay: 4000,
           disableOnInteraction: true,
           reverseDirection: true,
         }}

@@ -102,9 +102,10 @@ h6 {
 .box900 h1 {
   font-weight: 900;
 }
+/* Swiper Navigation Buttons */
 .swiper-button-next,
 .swiper-button-prev {
-  color: white; /* Change arrow color to white */
+  color: white !important; /* Force the color to white */
 }
 
 @tailwind base;
