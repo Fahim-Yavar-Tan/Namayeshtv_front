@@ -6,7 +6,7 @@ const Article = ({ img, header, text, link }) => {
       {/* Image Container */}
       <div
         onClick={() => (window.location.href = link)}
-        className="aspect-square border-2 mr-4 bg-red-400 border-yellow-500 rounded-tl-3xl rounded-br-3xl overflow-hidden cursor-pointer"
+        className="aspect-square border-2 mr-4 border-[#f3ba69] rounded-tl-3xl rounded-br-3xl overflow-hidden cursor-pointer"
       >
         <img className="object-cover w-full h-full" src={img} alt={header} />
       </div>
@@ -32,7 +32,7 @@ const Article = ({ img, header, text, link }) => {
 
         {/* Button */}
         <div className="absolute bottom-0 h-8 left-6 overflow-hidden rounded-bl-3xl rounded-tr-3xl border-2 border-yellow-500 w-[80px]">
-          <button className="h-full w-full text-white bg-transparent hover:bg-yellow-500 transition-colors duration-1000">
+          <button className="h-full w-full text-white bg-transparent hover:bg-[#f3ba69] transition-colors duration-300">
             <a href={link}>بیشتر</a>
           </button>
         </div>

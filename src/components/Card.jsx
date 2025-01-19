@@ -7,9 +7,9 @@ const Card = ({ name, img, link }) => {
     <motion.div
       whileHover={{ scale: 0.98 }}
       whileTap={{ scale: 1.02 }}
-      className="w-[150px] h-[220px] flex flex-col shrink-0"
+      className="w-[150px] h-[220px] mx-auto flex flex-col shrink-0"
     >
-      <div className="w-full h-[190px] bg-white rounded-tl-3xl rounded-br-3xl overflow-hidden">
+      <div className="w-full h-[190px] rounded-tl-3xl rounded-br-3xl overflow-hidden">
         <a href={link}>
           <img
             src={img ? img : ActorImg}

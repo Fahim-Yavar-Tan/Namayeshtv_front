@@ -76,7 +76,18 @@ const Header = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="w-full h-[80px] bg-[#8a0000]"></div>
+      <div className="w-full h-[80px] bg-[#740000] flex p-4 items-center relative">
+        <span
+          className="w-[3px] h-[75%] absolute top-2 right-1/2 
+         bg-white"
+        ></span>
+        <div className="w-1/2 h-full flex items-center">
+          <img className="h-full mx-auto" src={Namyesh} alt="" />
+        </div>
+        <div className="w-1/2 h-full flex items-center">
+          <img className="h-full mx-auto" src={Namyesh} alt="" />
+        </div>
+      </div>
     </>
   );
 };

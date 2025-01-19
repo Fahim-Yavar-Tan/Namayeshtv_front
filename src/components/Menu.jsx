@@ -19,7 +19,7 @@ const Menu = () => {
           <AnimatedHamburgerButton active={open} className="z-50" />
         </div>
         {open && (
-          <div className="fixed top-0 left-0 w-[100vw] lg:w-[300px] h-[100dvh] overflow-hidden bg-yellow-200/30 z-40">
+          <div className="fixed top-0 left-0 w-[100vw] lg:w-[300px] h-[100dvh] overflow-hidden z-40">
             <motion.div
               className="bg-white rounded-full relative top-4 left-4 z-40"
               animate={open ? { scale: 40 } : { scale: 0.01 }}

@@ -16,22 +16,22 @@ function HomePage() {
       <div className="min-h-[100dvh] w-full bg-[#0d0d0d]">
         <Navbar />
         <Header />
-        {/* <EpisodeCard name={"قسمت اول"} link={"/live"} /> */}
-        {/* <Card
+        <EpisodeCard name={"قسمت اول"} link={"/live"} />
+        <Card
           img={
             "https://www.attualita.it/wp-content/uploads/2023/08/robert-de-niro-foto-e1692266660946.webp"
           }
           name={"رابرت دنیرو"}
           link={"/live"}
-        /> */}
-        {/* <MovieCard
+        />
+        <MovieCard
           img={
             "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQAY2xsJVIZxm3K0gNtOMr9CSCvLdr5kdo3V3pv2HMuUkTBhFzRe5-b8NDRmO1mt5S5Xp_YyQ"
           }
           name={"پدر خوانده"}
           year={1990}
           duration={"2:20"}
-        /> */}
+        />
         <Article
           img={"http://45.195.200.189:8000/media/media/actor/images.jpg"}
           header={"عنوان"}
