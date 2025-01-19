@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const MovieDetail = ({ dirPic }) => {
   return (
-    <div className="w-full h-[800px] text-white mt-4 ">
+    <div id="targetDiv" className="w-full h-[800px] text-white mt-4 ">
       <div className="h-[400px] w-full flex relative ">
         <div className="w-1/2 h-full flex flex-col ">
           <h2 className="text-5xl font-bold mr-8 mt-8">کارگردان</h2>

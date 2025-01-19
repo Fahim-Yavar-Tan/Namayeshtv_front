@@ -24,7 +24,7 @@ const router = createBrowserRouter([
     element: <Live />,
   },
   {
-    path: "/movie",
+    path: "/movie/:movieId",
     element: <Movies />,
   },
   {

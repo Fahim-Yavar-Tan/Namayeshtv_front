@@ -30,7 +30,7 @@ const useAxios = (endpoint, method = "GET", options = {}) => {
     };
 
     fetchData();
-  }, [endpoint, method, options]);
+  }, [endpoint, method]);
 
   return { data, loading, error };
 };

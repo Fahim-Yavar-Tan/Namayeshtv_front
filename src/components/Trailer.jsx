@@ -12,6 +12,10 @@ const Trailer = ({ name, setRatingOpen }) => {
   const idleTimeout = useRef(null); // Reference to manage idle timeout
   const [isPlayed, setIsPlayed] = useState(false);
 
+  const scrollToDiv = () => {
+    document.getElementById("targetDiv").scrollIntoView({ behavior: "smooth" });
+  };
+
   // Toggle play/pause
   const togglePlay = () => {
     setIsPlayed(true);
@@ -119,13 +123,14 @@ const Trailer = ({ name, setRatingOpen }) => {
       </motion.div>
 
       {/* More Section */}
-      <motion.div
+      <motion.button
+        onClick={scrollToDiv}
         animate={isPlaying ? { y: 200, opacity: 0 } : {}}
-        className="absolute bottom-0 flex left-1/2 translate-x-[-50%] justify-between  h-[30px] w-[150px]"
+        className=" hidden absolute bottom-2  sm:flex left-[calc(50%-75px)] justify-between h-[30px] w-[150px] pointer-events-auto"
       >
-        <p className="text-white">مشاهده بیشتر</p>
-        <img className="size-6" src={Arrow} alt="" />
-      </motion.div>
+        <p className="text-white ">مشاهده بیشتر</p>{" "}
+        <img className="size-6 pointer-events-none" src={Arrow} alt="" />{" "}
+      </motion.button>
 
       {/* Movie Info */}
       <motion.div
