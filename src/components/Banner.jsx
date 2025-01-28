@@ -45,7 +45,7 @@ const Banner = ({ type }) => {
       </div>
 
       {/* Gradient Section */}
-      <div className="absolute sm:top-0 left-0 h-1/2 bottom-0  sm:h-full w-full sm:w-1/2 bg-gradient-to-b from-[#0b0b0b] to-[#8a0000] sm:bg-gradient-to-r sm:from-[#8a0000] sm:to-[#0b0b0b] inline-block">
+      <div className="absolute sm:top-0 left-0 h-1/2 bottom-0  sm:h-full w-full sm:w-1/2 bg-gradient-to-b from-[#0b0b0b] to-highlight sm:bg-gradient-to-r sm:from-highlight sm:to-[#0b0b0b] inline-block">
         <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start h-full px-6 space-x-4">
           <motion.div
             initial={{ opacity: 0, x: -200 }}
@@ -71,7 +71,7 @@ const Banner = ({ type }) => {
   ) : (
     <div className="w-full h-[300px] relative overflow-auto">
       {/* Gradient Section */}
-      <div className="absolute top-0 right-0 h-1/2 sm:h-full w-full sm:w-1/2 bg-gradient-to-b sm:bg-gradient-to-l from-[#8a0000] to-[#0b0b0b] inline-block">
+      <div className="absolute top-0 right-0 h-1/2 sm:h-full w-full sm:w-1/2 bg-gradient-to-b sm:bg-gradient-to-l from-highlight to-[#0b0b0b] inline-block">
         <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start h-full px-6 space-x-4">
           <motion.div
             initial={{ opacity: 0, x: 200 }}

@@ -33,7 +33,7 @@ const Navbar = () => {
                 to="/live"
                 className={({ isActive }) => {
                   return isActive
-                    ? "text-orange-400 my-auto"
+                    ? "text-secondary my-auto"
                     : "text-white my-auto";
                 }}
               >
@@ -51,7 +51,7 @@ const Navbar = () => {
               ["اخبار", "/news"],
               ["برنامه ها", "/movies"],
               ["سریال", "/series"],
-              ["فیلم", "/movie"],
+              ["فیلم", "/movie/1"],
               ["جدول پخش", "/table"],
               ["خانه", "/"],
             ].map((text, index) => (
@@ -65,7 +65,7 @@ const Navbar = () => {
                   to={text[1]}
                   className={({ isActive }) => {
                     return isActive
-                      ? "block py-2 px-1 text-[#e0a55c]"
+                      ? "block py-2 px-1 text-secondary"
                       : "block py-2 px-1";
                   }}
                 >

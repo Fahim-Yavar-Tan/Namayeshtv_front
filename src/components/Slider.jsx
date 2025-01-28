@@ -49,7 +49,7 @@ const Slider = () => {
       >
         <SwiperSlide>
           <MovieCard
-            name={"یه چیزی"}
+            name={"پدر خوانده"}
             img={
               "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQAY2xsJVIZxm3K0gNtOMr9CSCvLdr5kdo3V3pv2HMuUkTBhFzRe5-b8NDRmO1mt5S5Xp_YyQ"
             }
@@ -57,57 +57,41 @@ const Slider = () => {
         </SwiperSlide>
         <SwiperSlide>
           <MovieCard
-            name={"یه چیزی"}
+            name={"تنت"}
             img={
-              "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQAY2xsJVIZxm3K0gNtOMr9CSCvLdr5kdo3V3pv2HMuUkTBhFzRe5-b8NDRmO1mt5S5Xp_YyQ"
+              "https://musicart.xboxlive.com/7/14815100-0000-0000-0000-000000000002/504/image.jpg?w=1920&h=1080"
             }
           />
         </SwiperSlide>
         <SwiperSlide>
           <MovieCard
-            name={"یه چیزی"}
+            name={"ارباب حلقه ها"}
             img={
-              "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQAY2xsJVIZxm3K0gNtOMr9CSCvLdr5kdo3V3pv2HMuUkTBhFzRe5-b8NDRmO1mt5S5Xp_YyQ"
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4vzi7Jpm9OTbz1nXyYLIA2ZsKsY7ZZy-oRQ&s"
             }
           />
         </SwiperSlide>
         <SwiperSlide>
           <MovieCard
-            name={"یه چیزی"}
+            name={"مرد عنکبوتی"}
             img={
-              "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQAY2xsJVIZxm3K0gNtOMr9CSCvLdr5kdo3V3pv2HMuUkTBhFzRe5-b8NDRmO1mt5S5Xp_YyQ"
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg82bu5tY7bWNdelApwL6mHIs9eJf3eTmzNA&s"
             }
           />
         </SwiperSlide>
         <SwiperSlide>
           <MovieCard
-            name={"یه چیزی"}
+            name={"درون و بیرون"}
             img={
-              "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQAY2xsJVIZxm3K0gNtOMr9CSCvLdr5kdo3V3pv2HMuUkTBhFzRe5-b8NDRmO1mt5S5Xp_YyQ"
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAxuYESTQuIj-RPOaflje0vjVbCo9m2m1osw&s"
             }
           />
         </SwiperSlide>
         <SwiperSlide>
           <MovieCard
-            name={"یه چیزی"}
+            name={"حوض نقاشی"}
             img={
-              "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQAY2xsJVIZxm3K0gNtOMr9CSCvLdr5kdo3V3pv2HMuUkTBhFzRe5-b8NDRmO1mt5S5Xp_YyQ"
-            }
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <MovieCard
-            name={"یه چیزی"}
-            img={
-              "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQAY2xsJVIZxm3K0gNtOMr9CSCvLdr5kdo3V3pv2HMuUkTBhFzRe5-b8NDRmO1mt5S5Xp_YyQ"
-            }
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <MovieCard
-            name={"یه چیزی"}
-            img={
-              "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQAY2xsJVIZxm3K0gNtOMr9CSCvLdr5kdo3V3pv2HMuUkTBhFzRe5-b8NDRmO1mt5S5Xp_YyQ"
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2WKyd3T9FndQAWhrcMGXRQTew6Z3pIN7Uqw&s"
             }
           />
         </SwiperSlide>

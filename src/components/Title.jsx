@@ -14,10 +14,10 @@ const Title = ({ type, title }) => {
           stiffness: 30,
           damping: 12,
         }}
-        className="h-full origin-top w-[2px] bg-[#e0a55c]"
+        className="h-full origin-top w-[2px] bg-primary"
       ></motion.span>
       <motion.h2
-        initial={{ x: 100 }}
+        initial={{ x: 300 }}
         whileInView={{ x: 0 }}
         viewport={{ once: true }}
         transition={{
@@ -26,7 +26,7 @@ const Title = ({ type, title }) => {
           stiffness: 50,
           damping: 15,
         }}
-        className="text-[#e0a55c] text-3xl align-middle text-center my-auto mr-2"
+        className="text-[#e0a55c] text-3xl w-full justify-start align-middle  my-auto mr-2"
       >
         {title}
       </motion.h2>

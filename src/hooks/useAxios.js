@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://jsonplaceholder.typicode.com", // Set your base URL here
+  baseURL: "http://45.195.200.189:8000", // Set your base URL here
 });
 
 const useAxios = (endpoint, method = "GET", options = {}) => {

@@ -8,13 +8,13 @@ import Footer from "../components/Footer";
 import ContactForm from "../components/Form";
 import { useParams } from "react-router-dom";
 import useAxios from "../hooks/useAxios";
-import useFetch from "../hooks/useFetch";
 
 const Movies = () => {
   const params = useParams();
-  console.log("Params:", params);
 
-  const { data, loading, error } = useAxios("/posts");
+  const { data, loading, error } = useAxios(
+    `/movies/movies/detail/${params.movieId}`
+  );
   console.log("Data:", data);
   console.log("Error:", error);
 
@@ -23,8 +23,25 @@ const Movies = () => {
   return (
     <div className="w-full bg-[#0d0d0d]">
       <Navbar />
-      <Trailer setRatingOpen={setIsRatingOpen} />
-      <MovieDetail />
+      {data && (
+        <Trailer
+          setRatingOpen={setIsRatingOpen}
+          name={data.title_fa}
+          year={data.release_date}
+          ageRate={data.ages}
+          movieRate={data.rate_na}
+          poster={data.landscape_image}
+          Vid={data.trailer}
+        />
+      )}
+      {data && (
+        <MovieDetail
+          dirName={data.director[0].name}
+          dirPic={data.director[0].image}
+          dirYear={data.director[0].Date_of_birth}
+          movieDuration={data.movie_time}
+        />
+      )}
       <MovieComments />
       {isRatingOpen && (
         <Rating setOpen={setIsRatingOpen} name={"مرد ایرلندی"} />

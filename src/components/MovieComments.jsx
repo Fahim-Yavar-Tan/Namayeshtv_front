@@ -21,7 +21,7 @@ const CommentBox = () => {
     <>
       <motion.div
         whileHover={{ scale: 0.98 }}
-        className=" m-4 w-[95%] h-[120px] bg-[#2a2a2a] text-white rounded-tl-3xl rounded-br-3xl flex "
+        className=" m-4 mx-auto w-[95%] h-[120px] bg-[#2a2a2a] text-white rounded-tl-3xl rounded-br-3xl flex "
       >
         <div className="h-full mx-4 ">
           <img className="h-[120px] w-[120px] " src={UserImg} alt="userImg" />
