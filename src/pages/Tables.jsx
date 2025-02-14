@@ -50,11 +50,24 @@ const TimelineHeader = () => {
       <tr>
         <th></th>
         {times.map((time, index) => (
-          <th
+          <motion.th
             key={time}
             className={`p-2 bg-neutral border border-y-transparent relative border-x-black/20 text-white text-center text-sm ${
-              currentTime === time ? "bg-primary text-white" : ""
+              currentTime === time ? " text-white" : ""
             }  ${index === 11 ? "rounded-tl-3xl" : ""} `}
+            animate={
+              currentTime === time
+                ? {
+                    backgroundColor: ["#ffc300", "#55218f", "#ffc300"],
+                  }
+                : {}
+            }
+            transition={{
+              duration: 1.5, // Duration of the ping animation
+              repeat: Infinity, // Infinite loop
+              repeatType: "loop",
+              repeatDelay: 2, // Pause for 2 seconds before repeating
+            }}
           >
             {time}
             {currentTime === time && (
@@ -72,7 +85,7 @@ const TimelineHeader = () => {
                 className="w-2 h-2 mr-1 my-auto rounded-full bg-red-600 absolute left-5 bottom-[14px] "
               ></motion.div>
             )}
-          </th>
+          </motion.th>
         ))}
       </tr>
     </motion.thead>
