@@ -52,13 +52,26 @@ const TimelineHeader = () => {
         {times.map((time, index) => (
           <th
             key={time}
-            className={`p-2 bg-neutral border border-y-transparent border-x-black/20 text-white text-center text-sm ${
+            className={`p-2 bg-neutral border border-y-transparent relative border-x-black/20 text-white text-center text-sm ${
               currentTime === time ? "bg-primary text-white" : ""
-            } ${index === 0 ? "rounded-br-3xl" : ""} ${
-              index === 11 ? "rounded-tl-3xl" : ""
-            } `}
+            }  ${index === 11 ? "rounded-tl-3xl" : ""} `}
           >
             {time}
+            {currentTime === time && (
+              <motion.div
+                animate={{
+                  scale: [1, 1.5, 2, 1], // Starts normal, grows, and returns to normal instantly
+                  opacity: [1, 0.5, 0.2, 1], // Fully visible at the start and end
+                }}
+                transition={{
+                  duration: 1.5, // Duration of the ping animation
+                  repeat: Infinity, // Infinite loop
+                  repeatType: "loop",
+                  repeatDelay: 2, // Pause for 2 seconds before repeating
+                }}
+                className="w-2 h-2 mr-1 my-auto rounded-full bg-red-600 absolute left-5 bottom-[14px] "
+              ></motion.div>
+            )}
           </th>
         ))}
       </tr>
@@ -91,14 +104,37 @@ function MovieSchedule({ scheduleData }) {
     "جمعه",
   ];
 
+  const [hoveredMovie, setHoveredMovie] = useState(null);
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
   const getMovieForSlot = (day, slot) => {
-    return (
+    const movie =
       scheduleData.find(
         (entry) =>
           parseInt(entry.day) === day &&
           `${entry.start_time}-${entry.end_time}` === slot
-      )?.movies.title_fa || "-"
-    );
+      )?.movies || {};
+
+    return [
+      movie.title_fa || "-",
+      movie.landscape_image || "-",
+      movie.text_fa || "-",
+    ];
+  };
+
+  const handleMouseEnter = (event, day, slot) => {
+    const movie = getMovieForSlot(day, slot);
+    setHoveredMovie({
+      title: movie[0],
+      image: movie[1],
+      text: movie[2],
+      posX: event.clientX,
+      posY: event.clientY,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredMovie(null);
   };
 
   return (
@@ -113,24 +149,51 @@ function MovieSchedule({ scheduleData }) {
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 2, delay: 2.1 - index * 0.3 }}
               key={index}
-              className={index % 2 === 0 ? "bg-accent" : "bg-secondary"}
             >
-              <td className="px-1 py-3 w-[100px] h-9  bg-background text-white font-semibold">
+              <td className="px-1 py-3 w-[100px] h-9 bg-background text-white font-semibold">
                 {day}
               </td>
-              {console.log(timeSlots)}
+
               {timeSlots.map((slot) => (
                 <td
                   key={slot}
-                  className="p-[2px] w-[100px] h-9 border border-black/35 text-[12px]"
+                  className={`p-[2px] w-[100px] h-9 border border-black/35 text-[12px] text-center ${
+                    (index === 6) & (slot === "1-3")
+                      ? "rounded-br-3xl overflow-hidden"
+                      : ""
+                  } ${index % 2 === 0 ? "bg-accent" : "bg-secondary"}`}
+                  onMouseEnter={(event) =>
+                    handleMouseEnter(event, index + 1, slot)
+                  }
+                  onMouseLeave={handleMouseLeave}
                 >
-                  {getMovieForSlot(index + 1, slot)}
+                  {getMovieForSlot(index + 1, slot)[0]}
+                  {console.log(slot)}
                 </td>
               ))}
             </motion.tr>
           ))}
         </tbody>
       </table>
+      {hoveredMovie && (
+        <div
+          className="absolute w-[300px] h-[400px] overflow-hidden rounded-tl-3xl rounded-br-3xl bg-background shadow-lg border border-white/35"
+          style={{
+            top: `${hoveredMovie.posY - 50}px`,
+            left: `${hoveredMovie.posX + 50}px`,
+          }}
+        >
+          <img
+            src={`${BASE_URL}${hoveredMovie.image}`}
+            alt={hoveredMovie.title}
+            className="w-full h-1/2"
+          />
+          <h3 className="text-white text-2xl p-3">{hoveredMovie.title}</h3>
+          {console.log(hoveredMovie.image)}
+          <p className="text-white p-3 ">{hoveredMovie.text}</p>
+        </div>
+      )}
+      <div className="h-[300px]" />
     </div>
   );
 }
@@ -171,11 +234,9 @@ const Tables = () => {
           className="absolute right-0 left-0 bottom-0 h-[2px] origin-right bg-neutral"
         ></motion.span>
       </div>
-      {/* <Timeline /> */}
       {data && filterCurrentPersianWeek(data) && (
         <MovieSchedule scheduleData={filterCurrentPersianWeek(data)} />
       )}
-      <Footer />
     </div>
   );
 };

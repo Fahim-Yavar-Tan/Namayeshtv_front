@@ -81,7 +81,7 @@ const PaginationComponent = () => {
           </button>
         ))}
       </div>
-      <div className="gap-4 rounded-tl-2xl rounded-br-2xl mt-4 sm:mr-4 mr-[50vw] translate-x-[25px] overflow-hidden">
+      <div className="gap-4 rounded-tl-2xl rounded-br-2xl mt-4 sm:mr-8 mr-[50vw] translate-x-[25px] overflow-hidden hidden">
         <input
           type="number"
           value={currentPage}
