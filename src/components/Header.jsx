@@ -41,26 +41,13 @@ const SlideContent = ({ image, title, time }) => (
 );
 
 const Header = () => {
-  const slides = [
-    {
-      image:
-        "https://www.1pezeshk.com/wp-content/uploads/2024/10/2024-10-07_12-50-26.jpg",
-      title: "مرد ایرلندی",
-      time: "یکشنبه ساعت 18:00",
-    },
-    {
-      image:
-        "https://img.englishcinemakyiv.com/nKizXKvqQfZzAMBylGXBi7TuU37mFVp7Mb9phhtftSw/resize:fill:800:450:1:0/gravity:sm/aHR0cHM6Ly9leHBhdGNpbmVtYXByb2QuYmxvYi5jb3JlLndpbmRvd3MubmV0L2ltYWdlcy82MGMzNzFhMy0yNzQyLTQwZWYtYTQwOS1kMzE0NmI0YTNlNDQuanBn.jpg",
-      title: "میان ستاره ای",
-      time: "جمعه ساعت 8:00",
-    },
-    {
-      image:
-        "https://w0.peakpx.com/wallpaper/66/537/HD-wallpaper-brave-2012-luminos-orange-redhead-brave-horse-arrow-fantasy-girl-merida-archer-princess-disney-blue.jpg",
-      title: "دلیر",
-      time: "شنبه ساعت 14:00",
-    },
-  ];
+  const { data, loading, error } = useAxios("/movies/slider");
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error loading data</p>;
+  console.log(error);
+  console.log(data);
+  const baseURL = process.env.REACT_APP_BASE_URL;
 
   return (
     <>
@@ -73,12 +60,12 @@ const Header = () => {
         speed={1500}
         // direction="rtl"
       >
-        {slides.map((slide, index) => (
-          <SwiperSlide key={index}>
+        {data.map((slide) => (
+          <SwiperSlide key={slide.id}>
             <SlideContent
-              image={slide.image}
+              image={`${baseURL}${slide.image}`} // Adjust the prefix accordingly
               title={slide.title}
-              time={slide.time}
+              time={slide.text}
             />
           </SwiperSlide>
         ))}

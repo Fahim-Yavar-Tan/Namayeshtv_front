@@ -2,9 +2,17 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const Title = ({ type, title }) => {
+  const isSmall = type === "small";
+
   return (
-    <div className="w-full h-[70px] flex my-4 align-middle overflow-hidden">
-      <div className="bg-[#0d0d0d] h-full w-4 z-10"></div>
+    <div
+      className={`w-full ${
+        isSmall ? "h-[40px]" : "h-[70px]"
+      } flex my-4 align-middle overflow-hidden`}
+    >
+      <div
+        className={`bg-background h-full ${isSmall ? "w-2" : "w-4"} z-10`}
+      ></div>
       <motion.span
         initial={{ scaleY: 0 }}
         whileInView={{ scaleY: 1 }}
@@ -14,7 +22,9 @@ const Title = ({ type, title }) => {
           stiffness: 30,
           damping: 12,
         }}
-        className="h-full origin-top w-[2px] bg-primary"
+        className={`h-full origin-top ${
+          isSmall ? "w-[1px]" : "w-[2px]"
+        } bg-primary`}
       ></motion.span>
       <motion.h2
         initial={{ x: 300 }}
@@ -26,7 +36,9 @@ const Title = ({ type, title }) => {
           stiffness: 50,
           damping: 15,
         }}
-        className="text-[#e0a55c] text-3xl w-full justify-start align-middle  my-auto mr-2"
+        className={`text-primary ${
+          isSmall ? "text-xl" : "text-3xl"
+        } w-full justify-start align-middle my-auto mr-2`}
       >
         {title}
       </motion.h2>

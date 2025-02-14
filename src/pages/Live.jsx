@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const Live = () => {
   return (
     <>
-      <div className="w-[100wv] h-[100dvh] bg-[#0d0d0d] pt-[100px] ">
+      <div className="w-[100wv] h-[100dvh] bg-background pt-[100px] ">
         <Navbar />
         <div className="w-[100vw] h-[50px]  relative">
           <div className="w-[200px] absolute h-full left-1/2 translate-x-[-50%] ">
@@ -22,13 +22,13 @@ const Live = () => {
                   damping: 12, // Smoother stop
                   duration: 1.5, // Ensures the animation runs for 1.5 seconds
                 }}
-                className="absolute right-0 left-0 bottom-0 h-[2px] origin-right bg-yellow-600 "
+                className="absolute right-0 left-0 bottom-0 h-[2px] origin-right bg-primary "
               ></motion.span>
             </div>
           </div>
         </div>
         {/* player */}
-        <div className="text-white w-[90vw] h-[400px] border-yellow-600 border-2 rounded-tl-3xl rounded-br-3xl mx-auto mt-[30px] "></div>
+        <div className="text-white w-[90vw] h-[400px] border-primary border-2 rounded-tl-3xl rounded-br-3xl mx-auto mt-[30px] "></div>
       </div>
     </>
   );

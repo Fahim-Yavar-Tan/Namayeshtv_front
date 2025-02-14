@@ -4,12 +4,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#ffe382",
-        secondary: "#f3ba69",
-        background: "#0d0d0d",
-        neutral: "#e0a55c",
-        accent: "#2a2a2a",
-        highlight: "#740000",
+        primary: "#ffc300",
+        secondary: "#ffffcc",
+        background: "#17061f",
+        neutral: "#55218f",
+        accent: "#c6c4d2",
+        highlight: "#be8c23",
       },
       backgroundImage: {
         "custom-gradient":

@@ -21,8 +21,9 @@ const Movies = () => {
   const [isRatingOpen, setIsRatingOpen] = useState(false);
 
   return (
-    <div className="w-full bg-[#0d0d0d]">
+    <div className="w-full bg-background">
       <Navbar />
+      {!data && <div className="h-[100dvh]"></div>}
       {data && (
         <Trailer
           setRatingOpen={setIsRatingOpen}
@@ -34,7 +35,7 @@ const Movies = () => {
           Vid={data.trailer}
         />
       )}
-      {data && (
+      {data && data.director.length != 0 && (
         <MovieDetail
           dirName={data.director[0].name}
           dirPic={data.director[0].image}
@@ -44,7 +45,7 @@ const Movies = () => {
       )}
       <MovieComments />
       {isRatingOpen && (
-        <Rating setOpen={setIsRatingOpen} name={"مرد ایرلندی"} />
+        <Rating setOpen={setIsRatingOpen} name={data.title_fa} />
       )}
       <ContactForm />
       <Footer />

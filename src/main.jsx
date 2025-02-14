@@ -12,6 +12,10 @@ import AdminDashboard from "./pages/admin/AdminDashboard.jsx";
 import AddMovie from "./pages/admin/AddMovie.jsx";
 import AddSlider from "./pages/admin/AddSlider.jsx";
 import AdMessages from "./pages/admin/AdMessages.jsx";
+import News from "./pages/News.jsx";
+import Movie from "./pages/Movie.jsx";
+import Tables from "./pages/Tables.jsx";
+import ContactUs from "./pages/ContactUs.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,8 +28,24 @@ const router = createBrowserRouter([
     element: <Live />,
   },
   {
+    path: "/news",
+    element: <News />,
+  },
+  {
+    path: "/table",
+    element: <Tables />,
+  },
+  {
     path: "/movie/:movieId",
     element: <Movies />,
+  },
+  {
+    path: "/movies",
+    element: <Movie />,
+  },
+  {
+    path: "/contact",
+    element: <ContactUs />,
   },
   {
     path: "/admin",

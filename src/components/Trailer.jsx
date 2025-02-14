@@ -80,7 +80,7 @@ const Trailer = ({
       }
     };
   }, []);
-  const baseURL = "http://45.195.200.189:8000/";
+  const baseURL = process.env.REACT_APP_BASE_URL;
 
   return (
     <>
@@ -145,7 +145,7 @@ const Trailer = ({
         />
         <button
           onClick={togglePlay}
-          className="sm:w-[110px] sm:h-[40px] p-1 sm:p-0 text-sm mx-auto bg-highlight rounded-tl-2xl rounded-br-2xl text-white rounded "
+          className="sm:w-[110px] sm:h-[40px] p-1 sm:p-0 text-sm mx-auto bg-neutral rounded-tl-2xl rounded-br-2xl text-white rounded "
         >
           پخش آنونس
         </button>
@@ -180,11 +180,11 @@ const Trailer = ({
         <div className=" w-[100px] sm:w-[300px] sm:min-h-[100px] flex justify-between ">
           <button
             onClick={() => setRatingOpen(true)}
-            className=" w-10 sm:w-[140px] h-6 sm:h-[40px] text-[5px] border-2 sm:text-sm border-neutral rounded-tl-2xl rounded-br-2xl hover:bg-neutral duration-500 "
+            className=" w-10 sm:w-[140px] h-6 sm:h-[40px] text-[5px] border-2 sm:text-sm border-primary rounded-tl-2xl rounded-br-2xl hover:bg-primary duration-500 "
           >
             نظرسنجی
           </button>
-          <button className=" w-10 sm:w-[140px] h-6 sm:h-[40px] text-[5px] sm:text-sm border-2 border-neutral rounded-bl-2xl rounded-tr-2xl hover:bg-neutral duration-500 ">
+          <button className=" w-10 sm:w-[140px] h-6 sm:h-[40px] text-[5px] sm:text-sm border-2 border-primary rounded-bl-2xl rounded-tr-2xl hover:bg-primary duration-500 ">
             درخواست پخش
           </button>
         </div>

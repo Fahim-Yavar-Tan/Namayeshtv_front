@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://45.195.200.189:8000", // Set your base URL here
+  baseURL: process.env.REACT_APP_BASE_URL, // Set your base URL here
 });
+console.log();
 
 const useAxios = (endpoint, method = "GET", options = {}) => {
   const [data, setData] = useState(null);

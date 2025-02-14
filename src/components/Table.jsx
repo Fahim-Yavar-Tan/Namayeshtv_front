@@ -1,6 +1,9 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import useHorizontalScroll from "../hooks/useHorizontalScroll"; // Import the custom hook
 import { motion } from "framer-motion";
+import useAxios from "../hooks/useAxios";
+import Namayesh from "../assets/logos/Namayesh.png";
+
 function formatTime(hours, minutes) {
   return `${hours.toString().padStart(2, "0")}:${minutes
     .toString()
@@ -8,14 +11,13 @@ function formatTime(hours, minutes) {
 }
 
 // get the timeline distance
-function getCurrentDistance() {
+function getCurrentDistance(inputHour = null) {
   const now = new Date();
-  const hours = now.getHours();
-  const minutes = now.getMinutes();
+  const hours = inputHour !== null ? inputHour : now.getHours();
+  const minutes = inputHour !== null ? 0 : now.getMinutes();
   const totalMinutes = 1440 - (hours * 60 + minutes);
-  return Math.floor(totalMinutes * 6.66);
+  return Math.floor(totalMinutes * 6.66666);
 }
-console.log(getCurrentDistance());
 
 // Utility function to get the nearest past half-hour slot
 function getNearestHalfHourTime() {
@@ -27,6 +29,12 @@ function getNearestHalfHourTime() {
   const nearestHalfHour =
     minutes < 30 ? formatTime(hours, 0) : formatTime(hours, 30);
   return nearestHalfHour;
+}
+
+// filter the movies played today
+function filterMoviesByToday(movies) {
+  const today = new Date().toISOString().split("T")[0]; // Get today's date in "YYYY-MM-DD" format
+  return movies.filter((movie) => movie.date === today);
 }
 
 const TimeSlots = ({ currentSlotRef }) => {
@@ -47,8 +55,8 @@ const TimeSlots = ({ currentSlotRef }) => {
             ref={time === currentTimeSlot ? currentSlotRef : null}
             className={`time-slot ${
               time === currentTimeSlot
-                ? "bg-accent relative text-white h-[60px] w-[200px] text-xl text-center pt-4 min-w-[200px] flex-shrink-0 border-x border-white/30 z-20"
-                : "bg-accent relative text-white h-[60px] w-[200px] text-xl text-center pt-4 min-w-[200px] flex-shrink-0 border-x border-white/30"
+                ? "bg-secondary relative  h-[60px] w-[200px] text-xl text-center pt-4 min-w-[200px] flex-shrink-0 border-x border-black/40 z-20"
+                : "bg-secondary relative  h-[60px] w-[200px] text-xl text-center pt-4 min-w-[200px] flex-shrink-0 border-x border-black/40"
             }`}
           >
             {time}
@@ -76,8 +84,16 @@ const TimeSlots = ({ currentSlotRef }) => {
 };
 
 const Table = () => {
-  const scrollRef = useHorizontalScroll(); // Apply the custom hook here
+  const scrollRef = useHorizontalScroll();
   const currentSlotRef = useRef(null);
+  const { data, loading, error } = useAxios("/movies/conductor");
+  const [todaysMovies, setTodaysMovies] = useState([]);
+  useEffect(() => {
+    if (data) {
+      setTodaysMovies(filterMoviesByToday(data));
+    }
+  }, [data]);
+  console.log(todaysMovies);
 
   useEffect(() => {
     if (currentSlotRef.current && scrollRef.current) {
@@ -96,25 +112,38 @@ const Table = () => {
   }, [scrollRef]);
 
   return (
-    <div
-      ref={scrollRef}
-      className="bg-background border border-white/30 shadow-lg h-[150px] w-[1000px] mx-auto overflow-x-auto hide-scrollbar relative horizontal-scroll"
-    >
-      <div className="h-[60px] min-w-full flex z-20">
-        {/* timelines */}
-        <TimeSlots currentSlotRef={currentSlotRef} />
-      </div>
-      <span
-        className="w-[2px] h-full absolute top-0 bg-red-500 z-10 "
-        style={{ right: getCurrentDistance() }}
+    <div className="flex flex-row justify-center">
+      <div
+        ref={scrollRef}
+        className="bg-background border border-white/30 shadow-lg h-[150px] w-[1000px]  overflow-x-auto hide-scrollbar relative horizontal-scroll"
       >
-        {/* redline */}
-      </span>
+        <div className="h-[60px] min-w-full flex z-20">
+          {/* timelines */}
+          <TimeSlots currentSlotRef={currentSlotRef} />
+        </div>
+        <span
+          className="w-[2px] h-full absolute top-0 bg-red-500 z-10 "
+          style={{ right: getCurrentDistance() }}
+        >
+          {/* redline */}
+        </span>
 
-      <div>
-        {/* programs here */}
-        <div className="h-[90px] w-[600px] text-white pt-6 pr-4 text-xl bg-accent border-4 border-black/70 absolute right-[3800px] z-0  ">
-          گردباد ها (2024)
+        <div>
+          {/* programs here */}
+
+          {todaysMovies.map((movie) => (
+            <motion.div
+              key={movie.id}
+              whileHover={{ scale: 1.05 }}
+              className="h-[90px] w-[800px] text-white pt-6 pr-4 text-xl bg-accent3 border-4 border-black/70 absolute z-0"
+              style={{
+                right: getCurrentDistance(movie.end_time),
+              }}
+            >
+              {movie.movies.title_fa} (
+              {new Date(movie.movies.release_date).getFullYear()})
+            </motion.div>
+          ))}
         </div>
       </div>
     </div>

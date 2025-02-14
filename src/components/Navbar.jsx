@@ -65,7 +65,7 @@ const Navbar = () => {
                   to={text[1]}
                   className={({ isActive }) => {
                     return isActive
-                      ? "block py-2 px-1 text-secondary"
+                      ? "block py-2 px-1 text-primary"
                       : "block py-2 px-1";
                   }}
                 >
