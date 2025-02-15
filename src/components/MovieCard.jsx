@@ -25,7 +25,7 @@ const MovieCard = ({ img, name, year, duration }) => {
           className="absolute top-0 left-0 right-0 bottom-0 bg-white/5"
         >
           <div className=" mt-[80px] w-full h-1/3 pr-2 text-white">
-            <div className="w-full h-1/3 bg-yellow-400/30">{name}</div>
+            <div className="w-full h-1/3">{name}</div>
             <div className="w-full h-1/3">{year}</div>
             <div className="w-full h-1/3">{duration}</div>
           </div>
