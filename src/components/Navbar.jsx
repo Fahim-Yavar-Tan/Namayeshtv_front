@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CiSearch } from "react-icons/ci";
 import { motion } from "framer-motion";
-import { NavLink } from "react-router-dom";
 import Namayesh from "../assets/logos/Namayesh.png";
 import Menu from "./Menu";
+import { useLocation } from "react-router-dom";
+
 const Navbar = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const links = document.querySelectorAll("nav ul a");
+    links.forEach((link) => {
+      if (link.getAttribute("href") === location.pathname) {
+        link.classList.add("text-primary");
+      } else {
+        link.classList.remove("text-primary");
+      }
+    });
+  }, [location.pathname]);
+
   return (
     <>
       <nav className="flex flex-row-reverse justify-between h-[70px] pt-6 bg-[#0d0d0d]/10 fixed z-20 top-0 left-0 w-[100vw] backdrop-blur-[2px] ">
@@ -29,16 +43,9 @@ const Navbar = () => {
                 className="w-2 h-2 mr-1 my-auto rounded-full bg-red-600"
               ></motion.div>
 
-              <NavLink
-                to="/live"
-                className={({ isActive }) => {
-                  return isActive
-                    ? "text-secondary my-auto"
-                    : "text-white my-auto";
-                }}
-              >
+              <a href="/live" className="text-white my-auto">
                 پخش زنده
-              </NavLink>
+              </a>
             </div>
           </div>
 
@@ -51,7 +58,7 @@ const Navbar = () => {
               ["اخبار", "/news"],
               ["برنامه ها", "/movies"],
               ["سریال", "/series"],
-              ["فیلم", "/movie/1"],
+              ["فیلم", "/movies"],
               ["جدول پخش", "/table"],
               ["خانه", "/"],
             ].map((text, index) => (
@@ -61,16 +68,10 @@ const Navbar = () => {
                 whileHover="hover"
                 initial="initial"
               >
-                <NavLink
-                  to={text[1]}
-                  className={({ isActive }) => {
-                    return isActive
-                      ? "block py-2 px-1 text-primary"
-                      : "block py-2 px-1";
-                  }}
-                >
+                <a href={text[1]} className="block py-2 px-1">
                   {text[0]}
-                </NavLink>
+                </a>
+
                 {/* Line Animation */}
                 <motion.div
                   className="absolute left-1/2 bottom-0 h-[2px] bg-white"
@@ -84,8 +85,8 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
-        <div className="text-white mr-4 text-2xl my-auto  ">
-          <img className="h-[40px]" src={Namayesh} alt="Logo" />
+        <div className="text-white mr-7 text-2xl my-auto  ">
+          <img className="h-[60px]" src={Namayesh} alt="Logo" />
         </div>
       </nav>
     </>

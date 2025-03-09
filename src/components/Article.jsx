@@ -1,21 +1,27 @@
 import React from "react";
 
-const Article = ({ img, header, text, link, views }) => {
+const Article = ({ img, header, text, link, views, article, setArticle }) => {
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
   return (
     <div className="flex sm:h-[200px] h-[150px] my-6 w-full px-4 relative">
       {/* Image Container */}
       <div
-        onClick={() => (window.location.href = link)}
+        onClick={() => setArticle(article)}
         className="  sm:h-full h-2/3 my-auto aspect-square border-2 mr-4 border-primary rounded-tl-3xl rounded-br-3xl overflow-hidden cursor-pointer"
       >
-        <img className="object-cover w-full h-full" src={img} alt={header} />
+        <img
+          className="object-cover w-full h-full"
+          src={`${img}`}
+          alt={header}
+        />
+        {console.log(img)}
       </div>
 
       {/* Content */}
       <div className="flex w-[50%] flex-col justify-center  flex-grow pr-4 ">
         {/* Header */}
         <div
-          onClick={() => (window.location.href = link)}
+          onClick={() => setArticle(article)}
           className="h-8 text-white sm:text-2xl font-bold cursor-pointer line-clamp-1"
         >
           {header}
@@ -33,7 +39,7 @@ const Article = ({ img, header, text, link, views }) => {
         {/* Button */}
         <div className="absolute bottom-0 h-8 left-6 overflow-hidden rounded-bl-3xl rounded-tr-3xl border-2 border-primary w-[80px] hidden sm:block">
           <button className="h-full w-full text-white bg-transparent hover:bg-primary transition-colors duration-300 ">
-            <a href={link}>بیشتر</a>
+            <h2 onClick={() => setArticle(article)}>بیشتر</h2>
           </button>
         </div>
       </div>

@@ -3,165 +3,102 @@ import { Link } from "react-router-dom";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
+const menuItems = [
+  { label: "نمایش وبسایت", path: "/" },
+  { label: "داشبورد", path: "/admin/dashboard" },
+  { label: "جدول پخش نمایش", path: "/" },
+  { label: "جدول پخش تماشا", path: "/" },
+  { label: "اسلایدر", path: "/admin/slider" },
+];
+
+const dropdownMenus = [
+  {
+    label: "اخبار",
+    state: "isNewsOpen",
+    links: [
+      { label: "لیست اخبار", path: "/" },
+      { label: "افزودن خبر", path: "/" },
+      { label: "دسته بندی اخبار", path: "/" },
+    ],
+  },
+  {
+    label: "فیلم",
+    state: "isMoviesOpen",
+    links: [
+      { label: "لیست فیلم ها", path: "/" },
+      { label: "افزودن فیلم", path: "/admin/addmovie" },
+      { label: "بازیگرها", path: "/" },
+      { label: "کارگردان ها", path: "/" },
+      { label: "ژانر", path: "/admin/genres" },
+      { label: "نظرات کاربران", path: "/" },
+      { label: "درخواست پخش", path: "/" },
+    ],
+  },
+  {
+    label: "سریال",
+    state: "isSeriesOpen",
+    links: [
+      { label: "لیست سریال", path: "/" },
+      { label: "افزودن سریال", path: "/" },
+      { label: "نظرات کاربران", path: "/" },
+      { label: "درخواست پخش", path: "/" },
+    ],
+  },
+  {
+    label: "برنامه",
+    state: "isShowsOpen",
+    links: [
+      { label: "لیست برنامه", path: "/" },
+      { label: "افزودن برنامه", path: "/" },
+    ],
+  },
+];
+
 const AdNavbar = () => {
-  const [isNewsOpen, setIsNewsOpen] = useState(false);
-  const [isMoviesOpen, setIsMoviesOpen] = useState(false);
-  const [isSeriesOpen, setIsSeriesOpen] = useState(false);
-  const [isShowsOpen, setIsShowsOpen] = useState(false);
+  const [openMenus, setOpenMenus] = useState({});
+
+  const toggleMenu = (menu) => {
+    setOpenMenus((prev) => ({ ...prev, [menu]: !prev[menu] }));
+  };
+
   return (
-    <nav className="absolute right-0 top-0  overflow-y-auto h-[100dvh] w-[200px] border-l border-white bg-[#2b2b2b] ">
+    <nav className="absolute right-0 top-0 overflow-y-auto h-[100dvh] w-[200px] border-l border-white bg-[#2b2b2b]">
       <ul className="h-full w-full flex flex-col">
-        <li className="w-full h-[35px]  text-white p-1 border-white/40 ">
-          <Link to={"/"}> نمایش وبسایت</Link>
-        </li>
-        <li className="w-full h-[35px]  text-white p-1 border-white/40 ">
-          <Link to={"/admin/dashboard"}>داشبورد</Link>
-        </li>
-        <li className="w-full h-[35px]  text-white p-1 border-white/40 ">
-          <Link to={"/"}>جدول پخش نمایش</Link>
-        </li>
-        <li className="w-full h-[35px]  text-white p-1 border-white/40 ">
-          <Link to={"/"}>جدول پخش تماشا</Link>
-        </li>
-        <li className="w-full h-[35px]  text-white p-1 border-white/40 ">
-          <Link to={"/admin/slider"}>اسلایدر</Link>
-        </li>
-        <li className="w-full h-[35px]  bg-[#740000] text-white p-1 border-white/40 relative ">
-          <button onClick={() => setIsNewsOpen(!isNewsOpen)}>اخبار</button>
-          {isNewsOpen ? (
-            <RiArrowDownSLine
-              onClick={() => setIsNewsOpen(!isNewsOpen)}
-              className="absolute left-0 top-0 text-3xl text-white"
-            />
-          ) : (
-            <MdKeyboardArrowRight
-              onClick={() => setIsNewsOpen(!isNewsOpen)}
-              className="absolute left-0 top-0 text-3xl text-white"
-            />
-          )}
-        </li>
-        {isNewsOpen && (
-          <li className="w-full h-[35px]  pr-6 text-white p-1 border-white/40 ">
-            <Link to={"/"}>لیست اخبار</Link>
+        {menuItems.map(({ label, path }) => (
+          <li
+            key={label}
+            className="w-full h-[35px] text-white p-1 border-white/40"
+          >
+            <Link to={path}>{label}</Link>
           </li>
-        )}
-        {isNewsOpen && (
-          <li className="w-full h-[35px]  pr-6 text-white p-1 border-white/40 ">
-            <Link to={"/"}>افزودن خبر</Link>
-          </li>
-        )}
-        {isNewsOpen && (
-          <li className="w-full h-[35px]  pr-6 text-white p-1 border-white/40 ">
-            <Link to={"/"}>دسته بندی اخبار</Link>
-          </li>
-        )}
-        <li className="w-full h-[35px]  bg-[#740000] text-white p-1 border-white/40 relative ">
-          <button onClick={() => setIsMoviesOpen(!isMoviesOpen)}>فیلم</button>
-          {isMoviesOpen ? (
-            <RiArrowDownSLine
-              onClick={() => setIsMoviesOpen(!isMoviesOpen)}
-              className="absolute left-0 top-0 text-3xl text-white"
-            />
-          ) : (
-            <MdKeyboardArrowRight
-              onClick={() => setIsMoviesOpen(!isMoviesOpen)}
-              className="absolute left-0 top-0 text-3xl text-white"
-            />
-          )}
-        </li>
-        {isMoviesOpen && (
-          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
-            <Link to={"/"}>لیست فیلم ها</Link>
-          </li>
-        )}
-        {isMoviesOpen && (
-          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
-            <Link to={"/admin/addmovie"}>افزودن فیلم</Link>
-          </li>
-        )}
-        {isMoviesOpen && (
-          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
-            <Link to={"/"}>بازیگرها</Link>
-          </li>
-        )}
-        {isMoviesOpen && (
-          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
-            <Link to={"/"}>کارگردان ها</Link>
-          </li>
-        )}
-        {isMoviesOpen && (
-          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
-            <Link to={"/admin/genres"}>ژانر</Link>
-          </li>
-        )}
-        {isMoviesOpen && (
-          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
-            <Link to={"/"}>نظرات کاربران</Link>
-          </li>
-        )}
-        {isMoviesOpen && (
-          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
-            <Link to={"/"}>درخواست پخش</Link>
-          </li>
-        )}
-        <li className="w-full h-[35px]  bg-[#740000] text-white p-1 border-white/40 relative ">
-          <button onClick={() => setIsSeriesOpen(!isSeriesOpen)}>سریال</button>
-          {isSeriesOpen ? (
-            <RiArrowDownSLine
-              onClick={() => setIsSeriesOpen(!isSeriesOpen)}
-              className="absolute left-0 top-0 text-3xl text-white"
-            />
-          ) : (
-            <MdKeyboardArrowRight
-              onClick={() => setIsSeriesOpen(!isSeriesOpen)}
-              className="absolute left-0 top-0 text-3xl text-white"
-            />
-          )}
-        </li>
-        {isSeriesOpen && (
-          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
-            <Link to={"/"}>لیست سریال</Link>
-          </li>
-        )}
-        {isSeriesOpen && (
-          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
-            <Link to={"/"}>افزودن سریال</Link>
-          </li>
-        )}
-        {isSeriesOpen && (
-          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
-            <Link to={"/"}>نظرات کاربران</Link>
-          </li>
-        )}
-        {isSeriesOpen && (
-          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
-            <Link to={"/"}>درخواست پخش</Link>
-          </li>
-        )}
-        <li className="w-full h-[35px]  bg-[#740000] text-white p-1 border-white/40 relative">
-          <button onClick={() => setIsShowsOpen(!isShowsOpen)}>برنامه</button>
-          {isShowsOpen ? (
-            <RiArrowDownSLine
-              onClick={() => setIsShowsOpen(!isShowsOpen)}
-              className="absolute left-0 top-0 text-3xl text-white"
-            />
-          ) : (
-            <MdKeyboardArrowRight
-              onClick={() => setIsShowsOpen(!isShowsOpen)}
-              className="absolute left-0 top-0 text-3xl text-white"
-            />
-          )}
-        </li>
-        {isShowsOpen && (
-          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
-            <Link to={"/"}>لیست برنامه</Link>
-          </li>
-        )}
-        {isShowsOpen && (
-          <li className="w-full h-[35px] pr-6  text-white p-1 border-white/40 ">
-            <Link to={"/"}>افزودن برنامه</Link>
-          </li>
-        )}
+        ))}
+        {dropdownMenus.map(({ label, state, links }) => (
+          <React.Fragment key={label}>
+            <li className="w-full h-[35px] bg-[#740000] text-white p-1 border-white/40 relative">
+              <button onClick={() => toggleMenu(state)}>{label}</button>
+              {openMenus[state] ? (
+                <RiArrowDownSLine
+                  onClick={() => toggleMenu(state)}
+                  className="absolute left-0 top-0 text-3xl text-white"
+                />
+              ) : (
+                <MdKeyboardArrowRight
+                  onClick={() => toggleMenu(state)}
+                  className="absolute left-0 top-0 text-3xl text-white"
+                />
+              )}
+            </li>
+            {openMenus[state] &&
+              links.map(({ label, path }) => (
+                <li
+                  key={label}
+                  className="w-full h-[35px] pr-6 text-white p-1 border-white/40"
+                >
+                  <Link to={path}>{label}</Link>
+                </li>
+              ))}
+          </React.Fragment>
+        ))}
       </ul>
     </nav>
   );

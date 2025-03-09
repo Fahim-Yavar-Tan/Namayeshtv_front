@@ -5,6 +5,7 @@ import "swiper/swiper-bundle.css";
 import { Autoplay } from "swiper/modules";
 import { motion } from "framer-motion";
 import useAxios from "../hooks/useAxios";
+import Loading from "./Loading";
 
 const SlideContent = ({ image, title, time }) => (
   <div className="w-full overflow-hidden h-[calc(100dvh-80px)] relative">
@@ -43,8 +44,14 @@ const SlideContent = ({ image, title, time }) => (
 const Header = () => {
   const { data, loading, error } = useAxios("/movies/slider");
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error loading data</p>;
+  if (loading)
+    return (
+      <div className="h-[100dvh] flex items-center ">
+        <Loading />
+      </div>
+    );
+  if (error)
+    return <p className="text-white test-3xl">خطا در دریافت اطلاعات</p>;
   console.log(error);
   console.log(data);
   const baseURL = process.env.REACT_APP_BASE_URL;

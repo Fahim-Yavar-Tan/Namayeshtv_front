@@ -1,29 +1,36 @@
-# Use Node.js as the base image
-FROM node:18
+# Step 1: Use Node image to build the React app
+FROM node:18-alpine as build
 
-# Set the working directory inside the container
+# Set working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json first (for better caching)
-COPY package.json package-lock.json ./
+# Copy package.json and package-lock.json (or yarn.lock)
+COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy the rest of the application files
+# Copy the rest of the application code
 COPY . .
 
-# Build the Vite project
+# Set the environment variable here during build time
+ARG REACT_APP_BASE_URL
+ENV REACT_APP_BASE_URL=$REACT_APP_BASE_URL
+
+# Build the React app
 RUN npm run build
 
-# Use Nginx to serve the built app
+# Step 2: Use Nginx to serve the static files
 FROM nginx:alpine
 
-# Copy build files into Nginx's html directory
-COPY --from=0 /app/dist /usr/share/nginx/html
+# Copy the custom Nginx configuration file
+COPY nginx.conf /etc/nginx/nginx.conf
 
-# Expose port 80
+# Copy the built files from the build stage to the Nginx server directory
+COPY --from=build /app/dist /usr/share/nginx/html
+
+# Expose port 80 to the outside world
 EXPOSE 80
 
-# Start Nginx
+# Start Nginx when the container runs
 CMD ["nginx", "-g", "daemon off;"]

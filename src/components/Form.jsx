@@ -23,7 +23,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="w-[95%] mx-auto p-6 bg-secondary rounded-tl-3xl rounded-br-3xl my-6 shadow-md">
+    <div className="w-[95%] mx-auto p-6 bg-neutral rounded-tl-3xl rounded-br-3xl my-6 shadow-md">
       <form onSubmit={handleSubmit} className="flex flex-col">
         <div className="flex sm:flex-row flex-col justify-between">
           <div className="sm:w-1/2 w-full pr-2">
@@ -39,7 +39,7 @@ const ContactForm = () => {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="نام شما"
-                className="mt-1 block w-[90%] px-3 py-2 mb-8 text-black bg-transparent border-b border-primary shadow-sm focus:outline-none sm:text-sm"
+                className="mt-1 block w-[90%] px-3 py-2 mb-8 text-white bg-transparent border-b border-primary shadow-sm focus:outline-none sm:text-sm"
                 required
               />
             </div>
@@ -56,7 +56,7 @@ const ContactForm = () => {
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="شماره تماس"
-                className="mt-1 block w-[90%] px-3 py-2 mb-8 text-right text-black bg-transparent border-b border-primary shadow-sm focus:outline-none sm:text-sm"
+                className="mt-1 block w-[90%] px-3 py-2 mb-8 text-right text-white bg-transparent border-b border-primary shadow-sm focus:outline-none sm:text-sm"
                 required
               />
             </div>
@@ -73,7 +73,7 @@ const ContactForm = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="ایمیل"
-                className="mt-1 block w-[90%] px-3 py-2 mb-8 text-black bg-transparent border-b border-primary shadow-sm focus:outline-none sm:text-sm"
+                className="mt-1 block w-[90%] px-3 py-2 mb-8 text-white bg-transparent border-b border-primary shadow-sm focus:outline-none sm:text-sm"
                 required
               />
             </div>
@@ -90,7 +90,7 @@ const ContactForm = () => {
               value={formData.message}
               onChange={handleChange}
               placeholder="پیام"
-              className="mt-1 block w-full h-[83%] px-3 py-2 text-black bg-transparent border-b border-primary shadow-sm focus:outline-none sm:text-sm"
+              className="mt-1 block w-full h-[83%] px-3 py-2 text-white bg-transparent border-b border-primary shadow-sm focus:outline-none sm:text-sm"
               rows="4"
               required
             />
@@ -100,7 +100,7 @@ const ContactForm = () => {
         <div className="mx-auto">
           <button
             type="submit"
-            className="w-[100px] px-4 py-2 mx-auto text-black border-primary border-[2px] rounded-tl-xl rounded-br-2xl shadow hover:bg-primary duration-300"
+            className="w-[100px] px-4 py-2 mx-auto text-white border-primary border-[2px] rounded-tl-xl rounded-br-2xl shadow hover:bg-primary duration-300"
           >
             ثبت
           </button>

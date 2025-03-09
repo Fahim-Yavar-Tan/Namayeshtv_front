@@ -108,6 +108,20 @@ h6 {
   color: white !important; /* Force the color to white */
 }
 
+/* Tailwind CSS classes */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px; /* Adjust the gap as needed */
+  padding: 16px; /* Adjust the padding as needed */
+}
+
+/* Ensure the container has a max width and is centered */
+.container {
+  max-width: 1200px; /* Adjust the max width as needed */
+  margin: 0 auto;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

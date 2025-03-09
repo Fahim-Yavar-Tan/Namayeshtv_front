@@ -40,17 +40,29 @@ const Movie = () => {
         ></motion.span>
       </div>
       <MovieNavbar selected={selected} setSelected={setSelected} data={data} />
-      {movies &&
-        movies.results &&
-        movies.results.map((movie) => (
-          <MovieCard
-            key={movie.id}
-            img={`${BASE_URL}${movie.landscape_image}`}
-            name={movie.title_fa}
-            duration={movie.movie_time}
-            year={2016}
-          />
-        ))}
+      {loadingMovies && (
+        <div className="text-white text-3xl "> بارگزاری فیلم ها...</div>
+      )}
+      <div className="grid-container">
+        {movies &&
+          movies.results &&
+          !loadingMovies &&
+          movies.results.map((movie, index) => (
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <MovieCard
+                key={movie.id}
+                img={`${BASE_URL}${movie.landscape_image}`}
+                name={movie.title_fa}
+                duration={movie.movie_time}
+                year={2016}
+              />
+            </motion.div>
+          ))}
+      </div>
       <div className="h-[500px]" />
 
       <Footer />

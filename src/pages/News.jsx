@@ -96,6 +96,7 @@ const PaginationComponent = () => {
 };
 
 const News = () => {
+  const [selectedNews, setSelectedNews] = useState(null);
   const { data, loading, error } = useAxios("/news/news");
   const {
     data: topNews,
@@ -124,26 +125,78 @@ const News = () => {
         ></motion.span>
       </div>
 
-      <div className="w-full flex flex-col sm:flex-row min-h-[100dvh]">
-        <div className="sm:w-3/4 w-full h-full">
+      <div className="w-full flex flex-col sm:flex-row min-h-[100dvh] ">
+        <div className="sm:w-3/4 w-full h-full ">
+          {selectedNews && (
+            <div className="h-full w-full pr-8 text-white ">
+              <button
+                className="text-2xl block"
+                onClick={() => setSelectedNews(null)}
+              >
+                بازگشت
+              </button>
+              <div className=" overflow-x-hidden ">
+                <motion.div
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5, duration: 0.5 }}
+                  className=" inline-block w-1/3 my-auto aspect-square border-2 mt-4 border-primary rounded-tl-3xl rounded-br-3xl overflow-hidden "
+                >
+                  <motion.img
+                    className="object-cover w-full h-full"
+                    src={selectedNews.image}
+                    alt={"Article image"}
+                  />
+                </motion.div>
+                <div className="inline-block w-2/3 align-top text-white">
+                  <motion.h1
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1, duration: 0.5 }}
+                    className="inline-block p-4 pt-6 text-3xl"
+                  >
+                    {selectedNews.title}
+                  </motion.h1>
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.5, duration: 0.2 }}
+                    className="p-4"
+                  >
+                    {selectedNews.text}
+                    {selectedNews.text}
+                    {selectedNews.text}
+                    {selectedNews.text}
+                    {selectedNews.text}
+                  </motion.p>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Loading and Error Handling */}
           {loading && <p>Loading...</p>}
           {error && <p>Error loading data</p>}
           {/* News */}
 
-          {data &&
-            data.results.map((article) => (
-              <Article
-                key={article.id}
-                img={article.image}
-                header={article.title}
-                text={article.text}
-                link={`http://example.com/article/${article.id}`} // Adjust the link as necessary
-                views={article.view}
-              />
-            ))}
-
-          <PaginationComponent />
+          {data && !selectedNews && (
+            <div>
+              {data.results.map((article) => (
+                <Article
+                  article={article}
+                  setArticle={setSelectedNews}
+                  onClick={() => setSelectedNews(article)}
+                  key={article.id}
+                  img={article.image}
+                  header={article.title}
+                  text={article.text}
+                  link={`http://example.com/article/${article.id}`} // Adjust the link as necessary
+                  views={article.view}
+                />
+              ))}
+              <PaginationComponent />
+            </div>
+          )}
         </div>
         <div className="sm:w-1/4 w-full min-h-full flex flex-col">
           <div className="w-full sm:h-1/2">
@@ -152,10 +205,10 @@ const News = () => {
             {topNews &&
               topNews.results.map((newsItem) => (
                 <div
-                  className="text-white h-[50px] sm:m-2 m-4 flex"
+                  className="text-white h-[50px] sm:m-2 m-4 flex cursor-pointer"
                   key={newsItem.id}
+                  onClick={() => setSelectedNews(newsItem)}
                 >
-                  {" "}
                   <img className="h-[50px]" src={newsItem.image} />
                   <h3 className="text-white text-center pt-3 pr-2">
                     {newsItem.title}

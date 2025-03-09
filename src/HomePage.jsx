@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Title from "./components/Title";
 import Slider from "./components/Slider";
 import Table from "./components/Table";
+import Formm from "./components/Formm";
 
 function HomePage() {
   return (
@@ -21,6 +22,7 @@ function HomePage() {
         {/* <Title title={"یه تایتل"} /> */}
         <Banner type={2} />
         {/* <div className="h-[300px] w-[20px] bg-white "></div> */}
+        <Formm />
         <Footer />
       </div>
     </>

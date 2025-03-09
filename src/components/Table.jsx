@@ -55,8 +55,8 @@ const TimeSlots = ({ currentSlotRef }) => {
             ref={time === currentTimeSlot ? currentSlotRef : null}
             className={`time-slot ${
               time === currentTimeSlot
-                ? "bg-secondary relative  h-[60px] w-[200px] text-xl text-center pt-4 min-w-[200px] flex-shrink-0 border-x border-black/40 z-20"
-                : "bg-secondary relative  h-[60px] w-[200px] text-xl text-center pt-4 min-w-[200px] flex-shrink-0 border-x border-black/40"
+                ? "bg-neutral relative text-white h-[60px] w-[200px] text-xl text-center pt-4 min-w-[200px] flex-shrink-0 border-x border-black/40 z-20"
+                : "bg-neutral text-white relative  h-[60px] w-[200px] text-xl text-center pt-4 min-w-[200px] flex-shrink-0 border-x border-black/40"
             }`}
           >
             {time}
@@ -135,7 +135,7 @@ const Table = () => {
             <motion.div
               key={movie.id}
               whileHover={{ scale: 1.05 }}
-              className="h-[90px] w-[800px] text-white pt-6 pr-4 text-xl bg-accent3 border-4 border-black/70 absolute z-0"
+              className="h-[90px] w-[800px] text-white pt-6 pr-4 text-xl bg-accent3 border-4 bg-neutral border-black/70 absolute z-0"
               style={{
                 right: getCurrentDistance(movie.end_time),
               }}

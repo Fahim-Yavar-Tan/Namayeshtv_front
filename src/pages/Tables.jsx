@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Loading from "../components/Loading";
 import { motion } from "framer-motion";
 import useAxios from "../hooks/useAxios";
 
@@ -58,7 +58,7 @@ const TimelineHeader = () => {
             animate={
               currentTime === time
                 ? {
-                    backgroundColor: ["#ffc300", "#55218f", "#ffc300"],
+                    backgroundColor: ["#740000", "#2a2a2a", "#740000"],
                   }
                 : {}
             }
@@ -174,14 +174,16 @@ function MovieSchedule({ scheduleData }) {
                     (index === 6) & (slot === "1-3")
                       ? "rounded-br-3xl overflow-hidden"
                       : ""
-                  } ${index % 2 === 0 ? "bg-accent" : "bg-secondary"}`}
+                  } ${index % 2 === 0 ? "bg-primary" : "bg-secondary"}`}
                   onMouseEnter={(event) =>
                     handleMouseEnter(event, index + 1, slot)
                   }
                   onMouseLeave={handleMouseLeave}
                 >
-                  {getMovieForSlot(index + 1, slot)[0]}
-                  {console.log(slot)}
+                  <a href="/movie/1">
+                    {getMovieForSlot(index + 1, slot)[0]}
+                    {console.log(slot)}
+                  </a>
                 </td>
               ))}
             </motion.tr>
@@ -231,6 +233,11 @@ const Tables = () => {
   return (
     <div className="w-full min-h-[100dvh] bg-background">
       <Navbar />
+      {loading && (
+        <div className="h-[100dvh] w-full flex items-center">
+          <Loading />
+        </div>
+      )}
       <div className="relative w-[300px] h-[150px] mx-auto pt-[100px]">
         <h1 className="text-white text-center h-full align-middle text-2xl">
           جدول پخش نمایش
@@ -247,6 +254,7 @@ const Tables = () => {
           className="absolute right-0 left-0 bottom-0 h-[2px] origin-right bg-neutral"
         ></motion.span>
       </div>
+
       {data && filterCurrentPersianWeek(data) && (
         <MovieSchedule scheduleData={filterCurrentPersianWeek(data)} />
       )}
